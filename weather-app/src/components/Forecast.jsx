@@ -1,10 +1,10 @@
-// src/components/Forecast.jsx
+
 import React from "react";
 
 import { useState, useEffect } from 'react';
 import { fetchWeatherData, fetchForecastData } from '../../services/weatherApi';
 
-// import { fetchWeatherData } from "../services/weatherApi";
+
 
 
 const Forecast = ({ city }) => {
@@ -22,7 +22,7 @@ const Forecast = ({ city }) => {
       try {
         const data = await fetchForecastData(city);
         
-        // Process the forecast data to get daily forecasts
+       
         const dailyData = processForecastData(data.list);
         setForecast(dailyData);
       } catch (err) {
@@ -36,7 +36,7 @@ const Forecast = ({ city }) => {
     getForecast();
   }, [city]);
 
-  // Process the 3-hour forecast data to get daily forecasts
+  
   const processForecastData = (forecastList) => {
     const dailyForecasts = {};
     
@@ -57,11 +57,10 @@ const Forecast = ({ city }) => {
       dailyForecasts[date].descriptions.push(item.weather[0].description);
     });
     
-    // Get average temp and most frequent icon/description for each day
+   
     return Object.values(dailyForecasts).map(day => {
       const avgTemp = day.temps.reduce((sum, temp) => sum + temp, 0) / day.temps.length;
-      
-      // Find most frequent icon
+     
       const iconCounts = {};
       day.icons.forEach(icon => {
         iconCounts[icon] = (iconCounts[icon] || 0) + 1;
@@ -70,7 +69,7 @@ const Forecast = ({ city }) => {
         iconCounts[a] > iconCounts[b] ? a : b
       );
       
-      // Find most frequent description
+     
       const descCounts = {};
       day.descriptions.forEach(desc => {
         descCounts[desc] = (descCounts[desc] || 0) + 1;
@@ -85,7 +84,7 @@ const Forecast = ({ city }) => {
         icon: mainIcon,
         description: mainDescription
       };
-    }).slice(0, 5); // Limit to 5 days
+    }).slice(0, 5); 
   };
 
   if (loading) return <div className="text-center mt-4">Loading forecast...</div>;

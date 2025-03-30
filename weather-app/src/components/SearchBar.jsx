@@ -1,4 +1,4 @@
-// src/components/SearchBar.jsx
+
 
 import { useState } from 'react';
 import React from "react";

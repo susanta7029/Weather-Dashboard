@@ -1,4 +1,4 @@
-// src/components/RecentSearches.jsx
+
 import React from "react";
 
 const RecentSearches = ({ searches, onSelect }) => {

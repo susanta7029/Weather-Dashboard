@@ -1,4 +1,4 @@
-// // src/App.jsx
+
 
 import React from "react";
 import './index.css';
@@ -48,7 +48,7 @@ function App() {
       const data = await fetchWeatherData(city);
       setWeatherData(data);
       
-      // Update recent searches
+    
       setRecentSearches(prev => {
         const updated = [city, ...prev.filter(item => item.toLowerCase() !== city.toLowerCase())].slice(0, 5);
         return updated;
@@ -58,6 +58,7 @@ function App() {
       setError(
         err.response?.status === 404
           ? 'City not found. Please check the spelling and try again.'
+
           : 'Failed to fetch weather data. Please try again.'
       );
       setWeatherData(null);
@@ -128,8 +129,3 @@ function App() {
 
 export default App;
 
-// function App() {
-//   return <h1>Hello, Weather App!</h1>;
-// }
-
-// export default App;
